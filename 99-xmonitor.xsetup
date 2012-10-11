@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [[ -f /var/log/xmonitor.log ]]
+then
+	rm -Rfv /var/log/xmonitor.log
+fi
+
+if [[ -f /var/log/xmonitor_error.log ]]
+then
+	rm -Rfv /var/log/xmonitor_error.log
+fi
+
+/usr/sbin/xevent-monitor & 
