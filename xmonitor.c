@@ -24,25 +24,6 @@ void insert_event(const XRRNotifyEvent *e, const struct timeval *t){
 
 	memcpy(&ev.timestamp, t, sizeof (struct timeval));
 
-	/*if (exec_count == 0){
-		exec_events[0] = ev;
-		exec_count++;
-	}else if(exec_count == NUM_EVENTS){
-		logMessage(INFO, "Executed events cache full, discarding oldest one\n");
-		exec_events[0] = ev;
-	}else{
-		exec_events[exec_count - 1] = ev;
-		exec_count++;
-	}	
-
-
-	sprintf(msg, "Event cache size: %d\n ================== \n", exec_count);
-	logMessage(INFO, msg);
-	for (i = 0; i <= exec_count ; i++){
-		sprintf(msg, "Position: %d, event type: %d, timestamp: %d\n", i, exec_events[i].etype, exec_events[i].timestamp);
-		logMessage(INFO, msg);
-	}*/
-
 	if (exec_count == 0){
 		exec_events[0] = ev;
 		exec_count++;
@@ -89,7 +70,6 @@ int check_event(const XRRNotifyEvent *e, const struct timeval *t){
 
 			tdiff = tsdiff + (100 * tusdiff);
 
-			/*printf("t: %d, old t: %d\n", t, exec_events[i].timestamp);*/
 			sprintf(msg, "Event already found, time diff %lu. (> THS? %d)\n", tdiff, tdiff >= TIME_THS);
 			logMessage(INFO, msg);
 			return tdiff >= TIME_THS ? 1 : 0;

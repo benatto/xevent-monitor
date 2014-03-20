@@ -1,5 +1,5 @@
 CC	= gcc
-CFLAGS	= -Wall -O2 -g
+CFLAGS	= -Wall -O2 -g -ggdb
 LD	= gcc
 LDFLAGS	=
 LIBS	= `pkg-config --libs x11 xrandr`
